@@ -182,7 +182,6 @@
     </footer>
 
     <script>
-        // أيقونات Lucide
         lucide.createIcons();
 
         async function startGeneration() {
@@ -192,37 +191,56 @@
             const btnText = document.getElementById('btn-text');
             const btn = document.getElementById('generate-btn');
 
+            // بيانات الربط الفعلي مع Gemini
+            const API_KEY = "AQ.Ab8RN6KdJNzvXvwW3TFvP8P68f9m8KrLHB2l-104SXeXs2JCxQ";
+            const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
+
             if(!input.value.trim()) {
                 alert('يا بطل، دخل فكرة السكريبت الأول!');
                 return;
             }
 
-            // حالة التحميل
             btn.disabled = true;
-            btnText.innerHTML = "جاري الاتصال بالعقل الاصطناعي";
+            btnText.innerHTML = "جاري استحضار الإبداع";
             btnText.classList.add('loading-dots');
             outputContainer.style.display = 'block';
-            outputText.innerHTML = "جاري تحليل الفكرة وصياغة السيناريو...";
+            outputText.innerHTML = "جاري تحليل الفكرة وصياغة السيناريو عبر Gemini AI...";
             outputText.classList.add('opacity-50');
 
             try {
-                // محاكاة استجابة ذكية (AI Logic Simulation)
-                setTimeout(() => {
-                    const scriptTemplate = `📜 **السكريبت المولد بواسطة سكريبتك AI**\n\n📌 **المقدمة (The Hook):**\nبداية سينمائية قوية تخطف الأنفاس حول موضوع: "${input.value}"\n\n🎬 **المشهد الأول (The Problem):**\nتحليل عميق للمشكلة بأسلوب قصصي يمس المشاهد.\n\n💡 **العرض الرئيسي (The Solution):**\nنقاط مرتبة تقنياً لإيصال الفكرة بأبسط صورة.\n\n🎯 **الخاتمة (Call to Action):**\nتوجيه ذكي للمشاهد للتفاعل مع المحتوى.\n\n---\nتم التوليد بواسطة محرك AB MAKI المتطور بنجاح.`;
-                    
-                    outputText.innerHTML = scriptTemplate;
+                const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: `أنت مساعد ذكي متخصص في كتابة سكريبتات الفيديوهات لـ سكريبتك (Scriptak). 
+                                مهمتك هي كتابة سكريبت فيديو احترافي وجذاب بناءً على الفكرة التالية: "${input.value}". 
+                                اجعل الأسلوب إبداعياً، مقسماً إلى مقدمة (Hook)، محتوى رئيسي، وخاتمة قوية باللغة العربية.`
+                            }]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.candidates && data.candidates[0].content.parts[0].text) {
+                    const resultText = data.candidates[0].content.parts[0].text;
+                    outputText.innerText = resultText; 
                     outputText.classList.remove('opacity-50');
                     btnText.innerHTML = "توليد سكريبت آخر";
-                    btnText.classList.remove('loading-dots');
-                    btn.disabled = false;
-                    
-                    outputContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 2000);
+                } else {
+                    throw new Error("استجابة غير متوقعة");
+                }
 
             } catch (error) {
-                alert('عذراً، حدث خطأ في الاتصال بالسيرفر.');
-                btn.disabled = false;
+                console.error("Error:", error);
+                alert('عذراً، حدث خطأ في الاتصال بمحرك Gemini.');
                 btnText.innerHTML = "حاول مرة أخرى";
+            } finally {
+                btn.disabled = false;
+                btnText.classList.remove('loading-dots');
+                outputContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
 
