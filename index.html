@@ -8,8 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Outfit:wght@400;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <script src="https://unpkg.com/@lucide/icons"></script> <script>
-        // إعدادات Tailwind لتناسب ألوانك الخاصة
+    <script src="https://unpkg.com/@lucide/icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -30,31 +32,26 @@
         .glass { background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
         .btn-neon { background-color: #CCFF00; color: black; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(204, 255, 0, 0.2); }
         .btn-neon:hover { transform: scale(1.05); box-shadow: 0 0 35px rgba(204, 255, 0, 0.5); }
-        
-        /* انيميشن خلفية الأكواد */
         .code-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.03; pointer-events: none; z-index: -1; font-family: monospace; white-space: pre; }
-        
-        /* تحسينات إضافية لعرض النتيجة */
         .result-box { display: none; margin-top: 2rem; border-top: 1px solid rgba(204, 255, 0, 0.2); padding-top: 2rem; }
         .loading-dots:after { content: '...'; animation: dots 1.5s steps(5, end) infinite; }
         @keyframes dots { 0%, 20% { color: rgba(0,0,0,0); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); } 40% { color: #CCFF00; text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); } 60% { text-shadow: .25em 0 0 #CCFF00, .5em 0 0 rgba(0,0,0,0); } 80%, 100% { text-shadow: .25em 0 0 #CCFF00, .5em 0 0 #CCFF00; } }
-
-        /* ميزات جديدة */
         .feature-card:hover { border-color: #CCFF00; background: rgba(204, 255, 0, 0.05); }
         .stat-card { border-left: 2px solid #CCFF00; }
+        
+        /* تنسيقات مخصصة للرد المولد */
+        #ai-output h1, #ai-output h2, #ai-output h3 { color: #CCFF00; font-weight: bold; margin-bottom: 10px; }
+        #ai-output ul { list-style-type: disc; margin-right: 20px; margin-bottom: 15px; }
+        #ai-output strong { color: #CCFF00; }
     </style>
 </head>
 <body>
 
     <div class="code-bg text-[10px]">
         import { NextPage } from 'next';
-        const Scriptak = () => {
-          return <div>Build by Ab Maki</div>
-        }
+        const Scriptak = () => { return <div>Build by Ab Maki</div> }
         export default Scriptak;
         function generateScript(idea) { return fetch('/api/ai', { method: 'POST' }); }
-        // System.Security.Cryptography.Aes
-        // Backend: Node.js/Express
     </div>
 
     <nav class="sticky top-0 z-[100] bg-white py-4 px-6 flex justify-center items-center shadow-md">
@@ -104,11 +101,7 @@
                     <h2 class="text-xl font-bold">معمل السكريبت الذكي</h2>
                 </div>
 
-                <textarea 
-                    dir="rtl"
-                    id="user-input"
-                    class="w-full bg-charcoal/50 border border-white/5 rounded-3xl p-6 text-xl md:text-2xl outline-none focus:border-neonYellow/50 transition-all min-h-[250px] placeholder:text-gray-800 shadow-inner"
-                    placeholder="اكتب فكرة الفيديو أو رؤيتك هنا..."></textarea>
+                <textarea dir="rtl" id="user-input" class="w-full bg-charcoal/50 border border-white/5 rounded-3xl p-6 text-xl md:text-2xl outline-none focus:border-neonYellow/50 transition-all min-h-[250px] placeholder:text-gray-800 shadow-inner" placeholder="اكتب فكرة الفيديو أو رؤيتك هنا..."></textarea>
 
                 <div id="ai-result-container" class="result-box animate__animated animate__fadeIn">
                     <div class="flex justify-between items-center mb-4">
@@ -117,22 +110,16 @@
                             نسخ النص <i data-lucide="copy" class="w-4 h-4"></i>
                         </button>
                     </div>
-                    <div id="ai-output" class="text-gray-200 leading-relaxed text-lg whitespace-pre-wrap font-light border-l-2 border-neonYellow/30 pl-6 bg-black/20 p-6 rounded-2xl">
-                    </div>
+                    <div id="ai-output" class="text-gray-200 leading-relaxed text-lg whitespace-pre-wrap font-light border-l-2 border-neonYellow/30 pl-6 bg-black/20 p-6 rounded-2xl"></div>
                 </div>
 
                 <div class="mt-10 flex flex-col md:flex-row justify-between items-center gap-8">
                     <div class="flex gap-4 text-[10px] en-font text-gray-600 uppercase tracking-widest">
-                        <span>Node.js v20</span>
-                        <span>•</span>
-                        <span>Tailwind 3.4</span>
-                        <span>•</span>
-                        <span>React Framework</span>
+                        <span>Node.js v20</span><span>•</span><span>Tailwind 3.4</span><span>•</span><span>React Framework</span>
                     </div>
-
                     <button id="generate-btn" onclick="startGeneration()" class="btn-neon w-full md:w-auto px-16 py-5 rounded-2xl font-black text-2xl flex items-center justify-center gap-3 active:scale-95 transition-all">
                         <span id="btn-text">توليد السكريبت</span>
-                        <svg id="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
                     </button>
                 </div>
             </div>
@@ -167,17 +154,9 @@
                  <div class="flex gap-8 text-xs font-bold text-gray-500 mb-8">
                     <a href="#" class="hover:text-neonYellow transition-colors uppercase tracking-widest en-font">Privacy Policy</a>
                     <a href="#" class="hover:text-neonYellow transition-colors uppercase tracking-widest en-font">Terms of Service</a>
-                    <a href="#" class="hover:text-neonYellow transition-colors uppercase tracking-widest en-font">API Documentation</a>
                  </div>
             </div>
-            <div class="opacity-20 hover:opacity-100 transition-opacity duration-500">
-                <p class="en-font text-[10px] tracking-[0.5em] mb-4 uppercase">AB MAKI TECHNOLOGY SOLUTIONS &copy; 2026</p>
-                <div class="flex justify-center gap-4">
-                    <div class="w-10 h-[1px] bg-neonYellow"></div>
-                    <div class="w-2 h-2 bg-neonYellow rotate-45"></div>
-                    <div class="w-10 h-[1px] bg-neonYellow"></div>
-                </div>
-            </div>
+            <p class="en-font text-[10px] tracking-[0.5em] mb-4 uppercase opacity-20">AB MAKI TECHNOLOGY SOLUTIONS &copy; 2026</p>
         </div>
     </footer>
 
@@ -191,9 +170,9 @@
             const btnText = document.getElementById('btn-text');
             const btn = document.getElementById('generate-btn');
 
-            // بيانات الربط الفعلي مع Gemini
             const API_KEY = "AQ.Ab8RN6KdJNzvXvwW3TFvP8P68f9m8KrLHB2l-104SXeXs2JCxQ";
-            const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
+            // استخدمنا الإصدار الثابت 1.5 flash لضمان أفضل أداء
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
             if(!input.value.trim()) {
                 alert('يا بطل، دخل فكرة السكريبت الأول!');
@@ -204,19 +183,17 @@
             btnText.innerHTML = "جاري استحضار الإبداع";
             btnText.classList.add('loading-dots');
             outputContainer.style.display = 'block';
-            outputText.innerHTML = "جاري تحليل الفكرة وصياغة السيناريو عبر Gemini AI...";
+            outputText.innerHTML = "جاري الاتصال بالعقل الاصطناعي...";
             outputText.classList.add('opacity-50');
 
             try {
-                const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+                const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         contents: [{
                             parts: [{
-                                text: `أنت مساعد ذكي متخصص في كتابة سكريبتات الفيديوهات لـ سكريبتك (Scriptak). 
-                                مهمتك هي كتابة سكريبت فيديو احترافي وجذاب بناءً على الفكرة التالية: "${input.value}". 
-                                اجعل الأسلوب إبداعياً، مقسماً إلى مقدمة (Hook)، محتوى رئيسي، وخاتمة قوية باللغة العربية.`
+                                text: `أنت كاتب سيناريو محترف. اكتب سكريبت فيديو يوتيوب/تيك توك إبداعي جداً باللغة العربية حول: "${input.value}". استخدم عناوين واضحة ونقاط لتسهيل القراءة.`
                             }]
                         }]
                     })
@@ -226,16 +203,16 @@
 
                 if (data.candidates && data.candidates[0].content.parts[0].text) {
                     const resultText = data.candidates[0].content.parts[0].text;
-                    outputText.innerText = resultText; 
+                    // تحويل Markdown إلى HTML لعرضه بشكل جميل
+                    outputText.innerHTML = marked.parse(resultText);
                     outputText.classList.remove('opacity-50');
                     btnText.innerHTML = "توليد سكريبت آخر";
                 } else {
-                    throw new Error("استجابة غير متوقعة");
+                    throw new Error();
                 }
 
             } catch (error) {
-                console.error("Error:", error);
-                alert('عذراً، حدث خطأ في الاتصال بمحرك Gemini.');
+                outputText.innerHTML = "للأسف حدث خطأ في الاتصال. تأكد من أن مفتاح الـ API يعمل بشكل صحيح.";
                 btnText.innerHTML = "حاول مرة أخرى";
             } finally {
                 btn.disabled = false;
@@ -247,7 +224,7 @@
         function copyResult() {
             const text = document.getElementById('ai-output').innerText;
             navigator.clipboard.writeText(text);
-            alert('تم نسخ السكريبت بنجاح! جاهز للتصوير؟');
+            alert('تم نسخ السكريبت! بالتوفيق في التصوير يا مبدع.');
         }
     </script>
 </body>
