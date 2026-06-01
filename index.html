@@ -36,12 +36,10 @@
         .result-box { display: none; margin-top: 2rem; border-top: 1px solid rgba(204, 255, 0, 0.2); padding-top: 2rem; }
         .loading-dots:after { content: '...'; animation: dots 1.5s steps(5, end) infinite; }
         @keyframes dots { 0%, 20% { color: rgba(0,0,0,0); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); } 40% { color: #CCFF00; text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); } 60% { text-shadow: .25em 0 0 #CCFF00, .5em 0 0 rgba(0,0,0,0); } 80%, 100% { text-shadow: .25em 0 0 #CCFF00, .5em 0 0 #CCFF00; } }
-        .feature-card:hover { border-color: #CCFF00; background: rgba(204, 255, 0, 0.05); }
-        .stat-card { border-left: 2px solid #CCFF00; }
         
-        /* تنسيقات مخصصة للرد المولد */
-        #ai-output h1, #ai-output h2, #ai-output h3 { color: #CCFF00; font-weight: bold; margin-bottom: 10px; }
-        #ai-output ul { list-style-type: disc; margin-right: 20px; margin-bottom: 15px; }
+        /* تنسيق الـ AI Output */
+        #ai-output h1, #ai-output h2 { color: #CCFF00; font-size: 1.5rem; margin-bottom: 1rem; }
+        #ai-output p { margin-bottom: 1rem; line-height: 1.8; }
         #ai-output strong { color: #CCFF00; }
     </style>
 </head>
@@ -51,7 +49,6 @@
         import { NextPage } from 'next';
         const Scriptak = () => { return <div>Build by Ab Maki</div> }
         export default Scriptak;
-        function generateScript(idea) { return fetch('/api/ai', { method: 'POST' }); }
     </div>
 
     <nav class="sticky top-0 z-[100] bg-white py-4 px-6 flex justify-center items-center shadow-md">
@@ -60,104 +57,63 @@
         </div>
     </nav>
 
-    <section class="relative pt-20 pb-10 px-6 overflow-hidden">
-        <div class="container mx-auto text-center relative z-10">
-            <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tight animate__animated animate__zoomIn">
-                عصر <span class="text-neonYellow italic">الإبداع</span> <br> بدأ هنا.
-            </h1>
-            <p class="text-gray-500 max-w-2xl mx-auto text-lg md:text-xl font-bold">
-                محرك الذكاء الاصطناعي الأقوى لصناع المحتوى <br>
-                <span class="text-xs text-gray-700 en-font">POWERED BY NEXT.JS & PYTHON CORE</span>
-            </p>
-        </div>
+    <section class="relative pt-20 pb-10 px-6 text-center">
+        <h1 class="text-6xl md:text-8xl font-black mb-6 animate__animated animate__zoomIn">
+            عصر <span class="text-neonYellow italic">الإبداع</span> بدأ هنا.
+        </h1>
+        <p class="text-gray-500 max-w-2xl mx-auto text-lg md:text-xl font-bold uppercase en-font">
+            POWERED BY NEXT.JS & GEMINI FLASH
+        </p>
     </section>
 
-    <div class="container mx-auto px-6 mb-20">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="glass p-6 rounded-2xl text-center stat-card">
-                <div class="text-neonYellow text-3xl font-black en-font">+50K</div>
-                <div class="text-gray-500 text-xs mt-2 uppercase font-bold">سكريبت مولد</div>
-            </div>
-            <div class="glass p-6 rounded-2xl text-center stat-card">
-                <div class="text-neonYellow text-3xl font-black en-font">0.8s</div>
-                <div class="text-gray-500 text-xs mt-2 uppercase font-bold">سرعة المعالجة</div>
-            </div>
-            <div class="glass p-6 rounded-2xl text-center stat-card">
-                <div class="text-neonYellow text-3xl font-black en-font">100%</div>
-                <div class="text-gray-500 text-xs mt-2 uppercase font-bold">دقة لغوية</div>
-            </div>
-            <div class="glass p-6 rounded-2xl text-center stat-card">
-                <div class="text-neonYellow text-3xl font-black en-font">+10K</div>
-                <div class="text-gray-500 text-xs mt-2 uppercase font-bold">صانع محتوى</div>
-            </div>
+    <div class="container mx-auto px-6 mb-20 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="glass p-6 rounded-2xl text-center border-l-2 border-neonYellow">
+            <div class="text-neonYellow text-3xl font-black en-font">+50K</div>
+            <div class="text-gray-500 text-xs mt-2 font-bold uppercase">سكريبت مولد</div>
+        </div>
+        <div class="glass p-6 rounded-2xl text-center border-l-2 border-neonYellow">
+            <div class="text-neonYellow text-3xl font-black en-font">0.8s</div>
+            <div class="text-gray-500 text-xs mt-2 font-bold uppercase">سرعة المعالجة</div>
+        </div>
+        <div class="glass p-6 rounded-2xl text-center border-l-2 border-neonYellow">
+            <div class="text-neonYellow text-3xl font-black en-font">100%</div>
+            <div class="text-gray-500 text-xs mt-2 font-bold uppercase">دقة لغوية</div>
+        </div>
+        <div class="glass p-6 rounded-2xl text-center border-l-2 border-neonYellow">
+            <div class="text-neonYellow text-3xl font-black en-font">+10K</div>
+            <div class="text-gray-500 text-xs mt-2 font-bold uppercase">صانع محتوى</div>
         </div>
     </div>
 
     <section class="px-6 py-10">
-        <div class="max-w-5xl mx-auto glass rounded-[3rem] p-4 shadow-2xl animate__animated animate__fadeInUp">
-            <div class="bg-darkGrey/50 rounded-[2.5rem] p-8 md:p-12">
-                <div class="flex items-center gap-2 mb-6">
-                    <div class="w-3 h-3 bg-neonYellow rounded-full animate-pulse"></div>
-                    <h2 class="text-xl font-bold">معمل السكريبت الذكي</h2>
-                </div>
+        <div class="max-w-5xl mx-auto glass rounded-[3rem] p-8 md:p-12 animate__animated animate__fadeInUp">
+            <div class="flex items-center gap-2 mb-6">
+                <div class="w-3 h-3 bg-neonYellow rounded-full animate-pulse"></div>
+                <h2 class="text-xl font-bold">معمل السكريبت الذكي</h2>
+            </div>
 
-                <textarea dir="rtl" id="user-input" class="w-full bg-charcoal/50 border border-white/5 rounded-3xl p-6 text-xl md:text-2xl outline-none focus:border-neonYellow/50 transition-all min-h-[250px] placeholder:text-gray-800 shadow-inner" placeholder="اكتب فكرة الفيديو أو رؤيتك هنا..."></textarea>
+            <textarea id="user-input" class="w-full bg-charcoal/50 border border-white/5 rounded-3xl p-6 text-xl outline-none focus:border-neonYellow/50 transition-all min-h-[200px]" placeholder="اكتب فكرة الفيديو هنا..."></textarea>
 
-                <div id="ai-result-container" class="result-box animate__animated animate__fadeIn">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-neonYellow font-bold tracking-widest text-xs uppercase italic">AI Output Generation</span>
-                        <button onclick="copyResult()" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm bg-white/5 px-4 py-2 rounded-full">
-                            نسخ النص <i data-lucide="copy" class="w-4 h-4"></i>
-                        </button>
-                    </div>
-                    <div id="ai-output" class="text-gray-200 leading-relaxed text-lg whitespace-pre-wrap font-light border-l-2 border-neonYellow/30 pl-6 bg-black/20 p-6 rounded-2xl"></div>
+            <div id="ai-result-container" class="result-box">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-neonYellow font-bold italic uppercase text-xs">AI Result</span>
+                    <button onclick="copyResult()" class="text-gray-400 hover:text-white flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full">نسخ النص <i data-lucide="copy" class="w-4 h-4"></i></button>
                 </div>
+                <div id="ai-output" class="text-gray-200 leading-relaxed bg-black/20 p-6 rounded-2xl border-r-4 border-neonYellow"></div>
+            </div>
 
-                <div class="mt-10 flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div class="flex gap-4 text-[10px] en-font text-gray-600 uppercase tracking-widest">
-                        <span>Node.js v20</span><span>•</span><span>Tailwind 3.4</span><span>•</span><span>React Framework</span>
-                    </div>
-                    <button id="generate-btn" onclick="startGeneration()" class="btn-neon w-full md:w-auto px-16 py-5 rounded-2xl font-black text-2xl flex items-center justify-center gap-3 active:scale-95 transition-all">
-                        <span id="btn-text">توليد السكريبت</span>
-                        <i data-lucide="sparkles" class="w-6 h-6"></i>
-                    </button>
-                </div>
+            <div class="mt-10 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-[10px] text-gray-600 uppercase tracking-widest en-font">NODE.JS • TAILWIND • GEMINI</div>
+                <button id="generate-btn" onclick="startGeneration()" class="btn-neon px-12 py-5 rounded-2xl font-black text-xl flex items-center gap-3">
+                    <span id="btn-text">توليد السكريبت</span>
+                    <i data-lucide="zap" class="w-5 h-5"></i>
+                </button>
             </div>
         </div>
     </section>
 
-    <section class="py-20 container mx-auto px-6">
-        <h3 class="text-center text-3xl font-black mb-16 neon-glow text-neonYellow italic">لماذا يختار المحترفون سكريبتك؟</h3>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="glass p-10 rounded-[2.5rem] feature-card border border-transparent transition-all duration-500">
-                <i data-lucide="zap" class="text-neonYellow mb-6 w-10 h-10"></i>
-                <h4 class="text-xl font-bold mb-4">ذكاء اصطناعي فائق</h4>
-                <p class="text-gray-500 text-sm leading-relaxed">نستخدم أحدث موديلات اللغة لفهم اللهجات العربية وتوليد محتوى جذاب لجمهورك.</p>
-            </div>
-            <div class="glass p-10 rounded-[2.5rem] feature-card border border-transparent transition-all duration-500">
-                <i data-lucide="layout" class="text-neonYellow mb-6 w-10 h-10"></i>
-                <h4 class="text-xl font-bold mb-4">هيكلة سينمائية</h4>
-                <p class="text-gray-500 text-sm leading-relaxed">السكريبت لا يكتفي بالنص، بل يعطيك نصائح للإخراج، الزوايا، وتوقيتات المشاهد.</p>
-            </div>
-            <div class="glass p-10 rounded-[2.5rem] feature-card border border-transparent transition-all duration-500">
-                <i data-lucide="shield-check" class="text-neonYellow mb-6 w-10 h-10"></i>
-                <h4 class="text-xl font-bold mb-4">حقوق ملكية كاملة</h4>
-                <p class="text-gray-500 text-sm leading-relaxed">كل ما يتم توليده ملك لك تماماً، نضمن لك محتوى أصلي غير مكرر وحصري لقناتك.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-20 text-center border-t border-white/5 bg-darkGrey/30">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col items-center mb-10">
-                 <img src="https://i.ibb.co/GfCFBB42/Picsart-26-05-23-14-24-48-915.png" class="h-10 w-auto rounded-lg mb-6 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer" alt="Logo">
-                 <div class="flex gap-8 text-xs font-bold text-gray-500 mb-8">
-                    <a href="#" class="hover:text-neonYellow transition-colors uppercase tracking-widest en-font">Privacy Policy</a>
-                    <a href="#" class="hover:text-neonYellow transition-colors uppercase tracking-widest en-font">Terms of Service</a>
-                 </div>
-            </div>
-            <p class="en-font text-[10px] tracking-[0.5em] mb-4 uppercase opacity-20">AB MAKI TECHNOLOGY SOLUTIONS &copy; 2026</p>
-        </div>
+    <footer class="py-10 text-center opacity-30 text-[10px] en-font tracking-widest">
+        AB MAKI TECHNOLOGY SOLUTIONS &copy; 2026
     </footer>
 
     <script>
@@ -170,21 +126,20 @@
             const btnText = document.getElementById('btn-text');
             const btn = document.getElementById('generate-btn');
 
+            // البيانات الخاصة بك
             const API_KEY = "AQ.Ab8RN6KdJNzvXvwW3TFvP8P68f9m8KrLHB2l-104SXeXs2JCxQ";
-            // استخدمنا الإصدار الثابت 1.5 flash لضمان أفضل أداء
             const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
             if(!input.value.trim()) {
-                alert('يا بطل، دخل فكرة السكريبت الأول!');
+                alert('اكتب فكرة الأول يا بطل!');
                 return;
             }
 
             btn.disabled = true;
-            btnText.innerHTML = "جاري استحضار الإبداع";
+            btnText.innerText = "جاري الاتصال بالعقل الاصطناعي";
             btnText.classList.add('loading-dots');
             outputContainer.style.display = 'block';
-            outputText.innerHTML = "جاري الاتصال بالعقل الاصطناعي...";
-            outputText.classList.add('opacity-50');
+            outputText.innerHTML = "جاري الكتابة...";
 
             try {
                 const response = await fetch(API_URL, {
@@ -193,38 +148,35 @@
                     body: JSON.stringify({
                         contents: [{
                             parts: [{
-                                text: `أنت كاتب سيناريو محترف. اكتب سكريبت فيديو يوتيوب/تيك توك إبداعي جداً باللغة العربية حول: "${input.value}". استخدم عناوين واضحة ونقاط لتسهيل القراءة.`
+                                text: `أنت كاتب سيناريو محترف لموقع سكريبتك. اكتب سكريبت فيديو يوتيوب مشوق جداً بالعربية عن: ${input.value}`
                             }]
                         }]
                     })
                 });
 
                 const data = await response.json();
-
+                
                 if (data.candidates && data.candidates[0].content.parts[0].text) {
-                    const resultText = data.candidates[0].content.parts[0].text;
-                    // تحويل Markdown إلى HTML لعرضه بشكل جميل
-                    outputText.innerHTML = marked.parse(resultText);
-                    outputText.classList.remove('opacity-50');
-                    btnText.innerHTML = "توليد سكريبت آخر";
+                    const result = data.candidates[0].content.parts[0].text;
+                    outputText.innerHTML = marked.parse(result); // استخدام المكتبة لتنسيق النص
+                    btnText.innerText = "توليد سكريبت جديد";
                 } else {
                     throw new Error();
                 }
-
-            } catch (error) {
-                outputText.innerHTML = "للأسف حدث خطأ في الاتصال. تأكد من أن مفتاح الـ API يعمل بشكل صحيح.";
-                btnText.innerHTML = "حاول مرة أخرى";
+            } catch (e) {
+                outputText.innerText = "حدث خطأ. تأكد من اتصال الإنترنت أو صلاحية الـ API Key.";
+                btnText.innerText = "حاول مرة أخرى";
             } finally {
                 btn.disabled = false;
                 btnText.classList.remove('loading-dots');
-                outputContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                outputContainer.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
         function copyResult() {
             const text = document.getElementById('ai-output').innerText;
             navigator.clipboard.writeText(text);
-            alert('تم نسخ السكريبت! بالتوفيق في التصوير يا مبدع.');
+            alert('تم النسخ!');
         }
     </script>
 </body>
