@@ -38,6 +38,10 @@
         .result-box { display: none; margin-top: 2rem; border-top: 1px solid rgba(204, 255, 0, 0.2); padding-top: 2rem; }
         .loading-dots:after { content: '...'; animation: dots 1.5s steps(5, end) infinite; }
         @keyframes dots { 0%, 20% { color: rgba(0,0,0,0); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); } 40% { color: #CCFF00; text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); } 60% { text-shadow: .25em 0 0 #CCFF00, .5em 0 0 rgba(0,0,0,0); } 80%, 100% { text-shadow: .25em 0 0 #CCFF00, .5em 0 0 #CCFF00; } }
+
+        /* ميزات جديدة */
+        .feature-card:hover { border-color: #CCFF00; background: rgba(204, 255, 0, 0.05); }
+        .stat-card { border-left: 2px solid #CCFF00; }
     </style>
 </head>
 <body>
@@ -53,17 +57,9 @@
         // Backend: Node.js/Express
     </div>
 
-    <nav class="sticky top-0 z-[100] glass border-b border-white/5 py-4 px-6 flex justify-between items-center">
-        <div class="flex items-center gap-3 animate__animated animate__fadeInRight">
+    <nav class="sticky top-0 z-[100] bg-white py-4 px-6 flex justify-center items-center shadow-md">
+        <div class="animate__animated animate__fadeIn">
             <img src="https://i.ibb.co/GfCFBB42/Picsart-26-05-23-14-24-48-915.png" class="h-12 w-auto rounded-lg" alt="Logo">
-            <span class="text-2xl font-black text-neonYellow neon-glow">سكريبتك</span>
-        </div>
-        
-        <div class="flex items-center gap-6">
-            <div class="hidden md:flex items-center gap-4 text-sm font-bold text-gray-400">
-                <span class="en-font uppercase tracking-widest">Balance: <span class="text-neonYellow">0.00 EGP</span></span>
-            </div>
-            <button class="btn-neon font-black px-6 py-2 rounded-full text-sm">شحن رصيد</button>
         </div>
     </nav>
 
@@ -79,11 +75,32 @@
         </div>
     </section>
 
+    <div class="container mx-auto px-6 mb-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="glass p-6 rounded-2xl text-center stat-card">
+                <div class="text-neonYellow text-3xl font-black en-font">+50K</div>
+                <div class="text-gray-500 text-xs mt-2 uppercase font-bold">سكريبت مولد</div>
+            </div>
+            <div class="glass p-6 rounded-2xl text-center stat-card">
+                <div class="text-neonYellow text-3xl font-black en-font">0.8s</div>
+                <div class="text-gray-500 text-xs mt-2 uppercase font-bold">سرعة المعالجة</div>
+            </div>
+            <div class="glass p-6 rounded-2xl text-center stat-card">
+                <div class="text-neonYellow text-3xl font-black en-font">100%</div>
+                <div class="text-gray-500 text-xs mt-2 uppercase font-bold">دقة لغوية</div>
+            </div>
+            <div class="glass p-6 rounded-2xl text-center stat-card">
+                <div class="text-neonYellow text-3xl font-black en-font">+10K</div>
+                <div class="text-gray-500 text-xs mt-2 uppercase font-bold">صانع محتوى</div>
+            </div>
+        </div>
+    </div>
+
     <section class="px-6 py-10">
         <div class="max-w-5xl mx-auto glass rounded-[3rem] p-4 shadow-2xl animate__animated animate__fadeInUp">
             <div class="bg-darkGrey/50 rounded-[2.5rem] p-8 md:p-12">
                 <div class="flex items-center gap-2 mb-6">
-                    <div class="w-3 h-3 bg-neonYellow rounded-full"></div>
+                    <div class="w-3 h-3 bg-neonYellow rounded-full animate-pulse"></div>
                     <h2 class="text-xl font-bold">معمل السكريبت الذكي</h2>
                 </div>
 
@@ -96,11 +113,11 @@
                 <div id="ai-result-container" class="result-box animate__animated animate__fadeIn">
                     <div class="flex justify-between items-center mb-4">
                         <span class="text-neonYellow font-bold tracking-widest text-xs uppercase italic">AI Output Generation</span>
-                        <button onclick="copyResult()" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm">
+                        <button onclick="copyResult()" class="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm bg-white/5 px-4 py-2 rounded-full">
                             نسخ النص <i data-lucide="copy" class="w-4 h-4"></i>
                         </button>
                     </div>
-                    <div id="ai-output" class="text-gray-200 leading-relaxed text-lg whitespace-pre-wrap font-light border-l-2 border-neonYellow/30 pl-6">
+                    <div id="ai-output" class="text-gray-200 leading-relaxed text-lg whitespace-pre-wrap font-light border-l-2 border-neonYellow/30 pl-6 bg-black/20 p-6 rounded-2xl">
                     </div>
                 </div>
 
@@ -122,13 +139,44 @@
         </div>
     </section>
 
-    <footer class="py-20 text-center">
-        <div class="opacity-20 hover:opacity-100 transition-opacity duration-500">
-            <p class="en-font text-xs tracking-[0.5em] mb-4">AB MAKI TECHNOLOGY SOLUTIONS</p>
-            <div class="flex justify-center gap-4">
-                <div class="w-10 h-[1px] bg-neonYellow"></div>
-                <div class="w-2 h-2 bg-neonYellow rotate-45"></div>
-                <div class="w-10 h-[1px] bg-neonYellow"></div>
+    <section class="py-20 container mx-auto px-6">
+        <h3 class="text-center text-3xl font-black mb-16 neon-glow text-neonYellow italic">لماذا يختار المحترفون سكريبتك؟</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass p-10 rounded-[2.5rem] feature-card border border-transparent transition-all duration-500">
+                <i data-lucide="zap" class="text-neonYellow mb-6 w-10 h-10"></i>
+                <h4 class="text-xl font-bold mb-4">ذكاء اصطناعي فائق</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">نستخدم أحدث موديلات اللغة لفهم اللهجات العربية وتوليد محتوى جذاب لجمهورك.</p>
+            </div>
+            <div class="glass p-10 rounded-[2.5rem] feature-card border border-transparent transition-all duration-500">
+                <i data-lucide="layout" class="text-neonYellow mb-6 w-10 h-10"></i>
+                <h4 class="text-xl font-bold mb-4">هيكلة سينمائية</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">السكريبت لا يكتفي بالنص، بل يعطيك نصائح للإخراج، الزوايا، وتوقيتات المشاهد.</p>
+            </div>
+            <div class="glass p-10 rounded-[2.5rem] feature-card border border-transparent transition-all duration-500">
+                <i data-lucide="shield-check" class="text-neonYellow mb-6 w-10 h-10"></i>
+                <h4 class="text-xl font-bold mb-4">حقوق ملكية كاملة</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">كل ما يتم توليده ملك لك تماماً، نضمن لك محتوى أصلي غير مكرر وحصري لقناتك.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 text-center border-t border-white/5 bg-darkGrey/30">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center mb-10">
+                 <img src="https://i.ibb.co/GfCFBB42/Picsart-26-05-23-14-24-48-915.png" class="h-10 w-auto rounded-lg mb-6 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer" alt="Logo">
+                 <div class="flex gap-8 text-xs font-bold text-gray-500 mb-8">
+                    <a href="#" class="hover:text-neonYellow transition-colors uppercase tracking-widest en-font">Privacy Policy</a>
+                    <a href="#" class="hover:text-neonYellow transition-colors uppercase tracking-widest en-font">Terms of Service</a>
+                    <a href="#" class="hover:text-neonYellow transition-colors uppercase tracking-widest en-font">API Documentation</a>
+                 </div>
+            </div>
+            <div class="opacity-20 hover:opacity-100 transition-opacity duration-500">
+                <p class="en-font text-[10px] tracking-[0.5em] mb-4 uppercase">AB MAKI TECHNOLOGY SOLUTIONS &copy; 2026</p>
+                <div class="flex justify-center gap-4">
+                    <div class="w-10 h-[1px] bg-neonYellow"></div>
+                    <div class="w-2 h-2 bg-neonYellow rotate-45"></div>
+                    <div class="w-10 h-[1px] bg-neonYellow"></div>
+                </div>
             </div>
         </div>
     </footer>
@@ -158,20 +206,9 @@
             outputText.classList.add('opacity-50');
 
             try {
-                // محاكاة طلب الـ API - يمكنك استبداله برابط الـ API الخاص بك
-                // مثال لاستدعاء API حقيقي:
-                /*
-                const response = await fetch('https://your-api-endpoint.com/generate', {
-                    method: 'POST',
-                    body: JSON.stringify({ prompt: input.value })
-                });
-                const data = await response.json();
-                */
-
                 // محاكاة استجابة ذكية (AI Logic Simulation)
                 setTimeout(() => {
-                    const scriptTemplate = `📜 **السكريبت المولد بواسطة سكريبتك AI**\n\n📌 **المقدمة:**\n(بداية قوية تجذب المشاهد حول: ${input.value})\n\n🎬 **المشهد الأول:**\nتوضيح المشكلة التي يعالجها المحتوى بأسلوب مشوق.\n\n💡 **العرض الرئيسي:**\n1. النقطة الأولى الجوهرية.\n2. النقطة الثانية المدعمة بالحقائق.\n\n🎯 **الخاتمة (Call to Action):**\nدعوة المشاهدين للاشتراك ومشاركة آرائهم.\n\n---
-                    \nتم التوليد بواسطة محرك AB MAKI المتطور.`;
+                    const scriptTemplate = `📜 **السكريبت المولد بواسطة سكريبتك AI**\n\n📌 **المقدمة (The Hook):**\nبداية سينمائية قوية تخطف الأنفاس حول موضوع: "${input.value}"\n\n🎬 **المشهد الأول (The Problem):**\nتحليل عميق للمشكلة بأسلوب قصصي يمس المشاهد.\n\n💡 **العرض الرئيسي (The Solution):**\nنقاط مرتبة تقنياً لإيصال الفكرة بأبسط صورة.\n\n🎯 **الخاتمة (Call to Action):**\nتوجيه ذكي للمشاهد للتفاعل مع المحتوى.\n\n---\nتم التوليد بواسطة محرك AB MAKI المتطور بنجاح.`;
                     
                     outputText.innerHTML = scriptTemplate;
                     outputText.classList.remove('opacity-50');
@@ -179,7 +216,6 @@
                     btnText.classList.remove('loading-dots');
                     btn.disabled = false;
                     
-                    // التمرير التلقائي للنتيجة
                     outputContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 2000);
 
@@ -193,7 +229,7 @@
         function copyResult() {
             const text = document.getElementById('ai-output').innerText;
             navigator.clipboard.writeText(text);
-            alert('تم نسخ السكريبت للحيطة!');
+            alert('تم نسخ السكريبت بنجاح! جاهز للتصوير؟');
         }
     </script>
 </body>
