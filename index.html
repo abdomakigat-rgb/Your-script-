@@ -16,7 +16,8 @@
         :root {
             --primary-green: #2d6a4f; /* أخضر هادئ ومريح */
             --primary-blue: #4a90e2;  /* أزرق سماوي ناعم */
-            --gold-glow: #ffb703;     --bg-color: #f4f7f6;      /* خلفية فاتحة ومريحة */
+            --gold-glow: #ffb703;     
+            --bg-color: #f4f7f6;      /* خلفية فاتحة ومريحة */
             --text-dark: #2b2d42;     /* لون نص داكن مريح للقراءة */
         }
 
@@ -327,10 +328,37 @@
             justify-content: center;
             gap: 8px;
             font-weight: bold;
+            line-height: 1.6;
         }
 
         .support-title i {
             color: var(--primary-green);
+        }
+
+        /* ستايل بطاقة التبرع المدمجة بأسفل القصة */
+        .embedded-donate-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7f4 100%);
+            border: 2px dashed var(--primary-green);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(45, 106, 79, 0.05);
+        }
+
+        .embedded-donate-card p {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+        }
+
+        .embedded-donate-card span {
+            font-size: 0.9rem;
+            color: #555;
+            display: block;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
 
         /* حاوية أزرار طرق الدفع */
@@ -440,11 +468,11 @@
     <section class="support-modal" id="donate-methods">
         <p class="support-title"><i class="fa-solid fa-circle-dollar-to-slot"></i> دعم مكتب تحفيظ القرآن الكريم بلمسة واحدة:</p>
         <div class="buttons-container">
-            <a href="https://instapay.me/YOUR_USERNAME" target="_blank" class="pay-btn instapay">
+            <a href="https://ipn.eg/S/abmaki/instapay/0mhjUr" target="_blank" class="pay-btn instapay">
                 <img src="https://i.postimg.cc/hfV3Cvmt/GKV136-Insta-Pay-logobase-net.png" alt="InstaPay" class="btn-logo">
                 <span>InstaPay</span>
             </a>
-            <a href="tel:*9*7*رقم_المحفظة*القيمة_هنا#" class="pay-btn vodafone">
+            <a href="https://flous.page.link/Suaa" target="_blank" class="pay-btn vodafone">
                 <img src="https://i.postimg.cc/2qgQRFpP/etisalat-new-2022-seeklogo-(1).png" alt="Etisalat Cash" class="btn-logo">
                 <span>اتصالات كاش</span>
             </a>
@@ -491,7 +519,7 @@
             {
                 icon: "fa-handshake",
                 title: "٢. الصادق الأمين ورفعة الشأن",
-                text: "شبّ المصطفى ﷺ بين قومه مميزاً بمهابة ربانية وأخلاق طاهرة لم تدنسها الجاهلية قط. اشتغل في مطلع شبابه برعي الأغنام متأملاً في ملكوت السماء، ثم خرج في التجارة محققاً أرباحاً واسعة بصدقه وأمانته التي فاقت الآفاق حتى لُقّب في أرجاء الجزيرة بـ'الصادق الأمين'. قاده هذا النبل لزواج مبارك تاريخي من السيدة خديجة بنت خويلد رضي الله عنها، فكانت له الحصن الدافئ والسند القوي الحكيم."
+                text: "شبّ المصطفى ﷺ بين قومه مميزاً بمهابة ربانية وأخلاق طاهرة لم تدنسها الجاهلية قط. اشتغل في مطلع شبابه برعي الأغنام متأملاً في ملكوت السماء، ثم خرج في التجارة محققاً أرباحاً واسعة بصدقه وأمانته التي فاقت الآفاق حتى لُقّب in أرجاء الجزيرة بـ'الصادق الأمين'. قاده هذا النبل لزواج مبارك تاريخي من السيدة خديجة بنت خويلد رضي الله عنها، فكانت له الحصن الدافئ والسند القوي الحكيم."
             },
             {
                 icon: "fa-cave",
@@ -511,7 +539,7 @@
             {
                 icon: "fa-shield-halved",
                 title: "٦. الغزوات الكبرى والفتح المبين",
-                text: "لم يكن بدٌ من حماية الدولة الناشئة، فخاض المسلمون معارك فاصلة غيرت وجه الجزيرة العربية؛ من نصر بدر الإعجازي، وتمحيص أحد، إلى حصار الخندق الرهيب. توّج الله هذا الكفاح الأسطوري بالفتح الأعظم؛ 'فتح مكة' في العام الثامن للهجرة، حيث دخل النبي ﷺ الكعبة مطأطئاً رأسه تواضعاً لله، وحطم الأصنام، وضرب أروع صور العفو الإنساني في التاريخ معلناً لأعداء الأمس: (اذهبوا فأنتم الطلقاء)."
+                text: "لم يكن بدٌ من حماية الدولة الناشئة, خاض المسلمون معارك فاصلة غيرت وجه الجزيرة العربية؛ من نصر بدر الإعجازي، وتمحيص أحد، إلى حصار الخندق الرهيب. توّج الله هذا الكفاح الأسطوري بالفتح الأعظم؛ 'فتح مكة' في العام الثامن للهجرة، حيث دخل النبي ﷺ الكعبة مطأطئاً رأسه تواضعاً لله، وحطم الأصنام، وضرب أروع صور العفو الإنساني في التاريخ معلناً لأعداء الأمس: (اذهبوا فأنتم الطلقاء)."
             },
             {
                 icon: "fa-mosque",
@@ -551,6 +579,24 @@
                             </div>
                         `;
                     });
+                    
+                    // إضافة قسم التبرع المقترح بصيغة جميلة جداً في نهاية القصة مباشرة من الأسفل
+                    htmlContent += `
+                        <div class="embedded-donate-card">
+                            <p><i class="fa-solid fa-heart-rose" style="color: var(--primary-green); margin-left: 5px;"></i> صدقة جارية تظلك </p>
+                            <span>قال رسول الله ﷺ: «إذا مات ابن آدم انقطع عمله إلا من ثلاث: صدقة جارية...»<br>ساهم معنا في دعم مكتب تحفيظ القرآن الكريم لإنشاء جيل يحمل كتاب الله في قلبه. تبرعك الآن يصنع فرقاً!</span>
+                            <div class="buttons-container">
+                                <a href="https://ipn.eg/S/abmaki/instapay/0mhjUr" target="_blank" class="pay-btn instapay">
+                                    <img src="https://i.postimg.cc/hfV3Cvmt/GKV136-Insta-Pay-logobase-net.png" alt="InstaPay" class="btn-logo">
+                                    <span>تبرع عبر InstaPay</span>
+                                </a>
+                                <a href="https://flous.page.link/Suaa" target="_blank" class="pay-btn vodafone">
+                                    <img src="https://i.postimg.cc/2qgQRFpP/etisalat-new-2022-seeklogo-(1).png" alt="Etisalat Cash" class="btn-logo">
+                                    <span>اتصالات كاش</span>
+                                </a>
+                            </div>
+                        </div>
+                    `;
                     
                     htmlContent += `</div>`;
                     container.innerHTML = htmlContent;
