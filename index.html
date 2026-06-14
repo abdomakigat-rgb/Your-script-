@@ -16,8 +16,7 @@
         :root {
             --primary-green: #2d6a4f; /* أخضر هادئ ومريح */
             --primary-blue: #4a90e2;  /* أزرق سماوي ناعم */
-            --gold-glow: #ffb703;     /* لمسة ذهبية دافئة */
-            --bg-color: #f4f7f6;      /* خلفية فاتحة ومريحة */
+            --gold-glow: #ffb703;     --bg-color: #f4f7f6;      /* خلفية فاتحة ومريحة */
             --text-dark: #2b2d42;     /* لون نص داكن مريح للقراءة */
         }
 
@@ -36,76 +35,169 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 30px 20px;
+            padding: 240px 20px 40px 20px; /* زيادة الهامش العلوي لتعويض الهيدر الثابت المطور */
             overflow-x: hidden;
             position: relative;
         }
 
-        /* تأثيرات خلفية ناعمة جداً بدلاً من الأشكال الحادة */
-        body::before, body::after {
-            content: '';
+        /* حاوية الخلفية التفاعلية الحية */
+        #interactive-bg {
             position: fixed;
-            border-radius: 50%;
-            filter: blur(100px);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
-            opacity: 0.4;
-        }
-        body::before {
-            width: 300px;
-            height: 300px;
-            background: rgba(74, 144, 226, 0.15);
-            top: 10%;
-            left: -5%;
-        }
-        body::after {
-            width: 350px;
-            height: 350px;
-            background: rgba(45, 106, 79, 0.12);
-            bottom: 10%;
-            right: -5%;
+            pointer-events: none;
+            overflow: hidden;
         }
 
-        /* الهيدر واللوجو بتصميم متناسق وعصري */
+        .bg-glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.35;
+            transition: transform 0.2s ease-out;
+        }
+
+        /* الهيدر واللوجو بتصميم ثابت متناسق وعصري يواكب السكرول */
         header {
-            text-align: center;
-            margin-bottom: 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(244, 247, 246, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 12px 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(238, 242, 241, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* توزيع احترافي جانبي لزر التبرع واللوجو */
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .logo {
-            width: 120px;
-            height: 120px;
+            width: 65px;
+            height: 65px;
             object-fit: cover;
             border-radius: 50%;
             /* ظل ناعم وخفيف متناسق مع الألوان الجديدة */
-            box-shadow: 0 10px 25px rgba(45, 106, 79, 0.1);
-            border: 4px solid white;
-            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(45, 106, 79, 0.1);
+            border: 3px solid white;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .logo:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(45, 106, 79, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(45, 106, 79, 0.15);
         }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: 1.6rem;
             color: var(--primary-green);
-            margin-bottom: 8px;
+            margin-bottom: 2px;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
 
         .slogan {
-            font-size: 1.1rem;
+            font-size: 0.85rem;
             color: #6c757d;
             font-weight: 500;
         }
 
-        /* قسم العبارات الدينية بتصميم البطاقات العائمة الحديثة Clean UI */
+        /* زر تبرع الآن التفاعلي الجديد بالهيدر */
+        .header-donate-btn {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #22513c 100%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(45, 106, 79, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .header-donate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 106, 79, 0.35);
+        }
+
+        /* تصميم صندوق البحث الإحترافي الجديد */
+        .search-container {
+            width: 100%;
+            max-width: 520px;
+            display: flex;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 50px;
+            padding: 6px 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 25px;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .search-container:focus-within {
+            border-color: var(--primary-green);
+            box-shadow: 0 10px 25px rgba(45, 106, 79, 0.08);
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 10px 15px;
+            font-size: 1.05rem;
+            font-family: inherit;
+            color: var(--text-dark);
+            background: transparent;
+        }
+
+        .search-btn {
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .search-btn:hover {
+            background: #22513c;
+            transform: scale(1.03);
+        }
+
+        /* قسم العبارات والقصص بتصميم البطاقات العائمة الحديثة Clean UI */
         .content-section {
             width: 100%;
-            max-width: 480px;
+            max-width: 520px;
             background: #ffffff;
             border-radius: 24px;
             padding: 35px 25px;
@@ -124,89 +216,64 @@
         }
 
         .quote-box {
-            min-height: 120px;
+            min-height: 160px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.15rem;
             line-height: 1.8;
             color: var(--text-dark);
-            margin-bottom: 25px;
-            padding: 20px;
+            padding: 10px;
+            transition: opacity 0.2s ease-in-out;
+            text-align: right;
+        }
+
+        /* ستايل مخصص لعرض القصة بشكل منظم على هيئة محطات أو بطاقات مصورة */
+        .story-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .story-card {
+            background: #f8faf9;
             border-right: 4px solid var(--primary-green);
             border-left: 4px solid var(--primary-blue);
-            background: #f8faf9;
             border-radius: 16px;
-            transition: opacity 0.2s ease-in-out;
+            padding: 24px 20px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
+            text-align: justify;
+            text-justify: inter-word;
         }
 
-        .quote-box i {
+        .story-title-style {
+            font-size: 1.2rem;
             color: var(--primary-green);
-            margin-left: 12px;
-            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
         }
 
-        /* حاوية الأزرار التفاعلية */
-        .action-container {
+        .story-image-placeholder {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #eef5f2, #e3edf7);
+            border-radius: 12px;
+            margin-bottom: 15px;
             display: flex;
-            gap: 12px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .next-btn {
-            background: var(--primary-green);
-            color: white;
-            border: none;
-            padding: 14px 35px;
-            font-size: 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(45, 106, 79, 0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-
-        .next-btn i {
-            font-size: 0.95rem;
-            color: var(--gold-glow);
-        }
-
-        .next-btn:hover {
-            background: #22513c;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(45, 106, 79, 0.25);
-        }
-
-        .next-btn:active {
-            transform: translateY(0);
-        }
-
-        /* زر النسخ بتصميم دائري متناسق */
-        .copy-btn {
-            background: #ffffff;
-            color: #6c757d;
-            border: 1px solid #e2e8f0;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+            color: var(--primary-green);
+            font-size: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
-        .copy-btn:hover {
-            background: #f8faf9;
-            border-color: var(--primary-blue);
-            color: var(--primary-blue);
-            transform: translateY(-2px);
+        .quote-box i.main-icon {
+            color: var(--primary-green);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
         }
 
         /* رسالة التنبيه عند النسخ */
@@ -227,38 +294,52 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* قسم قنوات الدعم والمساهمة الفلات الأنيق */
-        .support-section {
-            width: 100%;
-            max-width: 480px;
+        /* نافذة منبثقة منسدلة خاصة بوسائل التبرع عند الضغط من الهيدر */
+        .support-modal {
+            display: none;
+            position: fixed;
+            top: 95px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 520px;
             text-align: center;
             background: #ffffff;
             border-radius: 24px;
             padding: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
             border: 1px solid #eef2f1;
+            z-index: 999;
+            animation: slideDownModal 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+        }
+
+        @keyframes slideDownModal {
+            from { opacity: 0; transform: translate(-50%, -20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
         }
 
         .support-title {
-            font-size: 1rem;
-            margin-bottom: 20px;
-            color: #4a4a4a;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #2b2d42;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            font-weight: 600;
+            font-weight: bold;
         }
 
         .support-title i {
-            color: var(--primary-blue);
+            color: var(--primary-green);
         }
 
+        /* حاوية أزرار طرق الدفع */
         .buttons-container {
             display: flex;
             gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 15px;
         }
 
         .pay-btn {
@@ -302,36 +383,62 @@
             color: #E60000;
             transform: translateY(-2px);
         }
+
+        /* تصميم متجاوب للهواتف والشاشات الصغيرة للهيدر */
+        @media (max-width: 480px) {
+            header {
+                flex-direction: row;
+                padding: 10px 15px;
+            }
+            h1 { font-size: 1.2rem; }
+            .slogan { font-size: 0.75rem; }
+            .logo { width: 50px; height: 50px; }
+            .header-donate-btn { padding: 8px 14px; font-size: 0.85rem; }
+            body { padding-top: 210px; }
+            .support-modal { top: 80px; }
+        }
     </style>
 </head>
 <body>
 
+    <div id="interactive-bg">
+        <div class="bg-glow-orb" id="orb-blue" style="width: 350px; height: 350px; background: rgba(74, 144, 226, 0.2); top: 15%; left: 5%;"></div>
+        <div class="bg-glow-orb" id="orb-green" style="width: 400px; height: 400px; background: rgba(45, 106, 79, 0.15); bottom: 15%; right: 5%;"></div>
+    </div>
+
     <header>
-        <img src="https://i.postimg.cc/vxFdCjHJ/file-1781392254082.png" alt="لوجو في رحاب الذكر" class="logo">
-        <h1>في رِحَابِ الذِّكْرِ</h1>
-        <p class="slogan">"أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ"</p>
+        <div class="header-right">
+            <img src="https://i.postimg.cc/vxFdCjHJ/file-1781392254082.png" alt="لوجو في رحاب الذكر" class="logo">
+            <div class="header-info">
+                <h1>في رِحَابِ الذِّكْرِ</h1>
+                <p class="slogan">"أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ"</p>
+            </div>
+        </div>
+        
+        <button class="header-donate-btn" onclick="toggleDonateOptions()">
+            <span>تبرع الآن</span>
+            <i class="fa-solid fa-hand-holding-heart"></i>
+        </button>
     </header>
+
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="اكتب 'قصة سيدنا محمد' لرؤية السيرة كاملة..." onkeypress="handleKeyPress(event)">
+        <button class="search-btn" onclick="getNewQuote()" title="بحث">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
 
     <main class="content-section">
         <div class="toast" id="copy-toast"><i class="fa-solid fa-check"></i> تم نسخ الذكر بمحبة</div>
         
         <div class="quote-box" id="quote-container">
-            <i class="fa-solid fa-spinner fa-spin"></i> جاري تحميل الذكر الحكيم...
-        </div>
-        
-        <div class="action-container">
-            <button class="next-btn" onclick="getNewQuote()">
-                <span>عبارة أخرى</span> 
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-            </button>
-            <button class="copy-btn" onclick="copyCurrentQuote()" title="نسخ العبارة لنشرها">
-                <i class="fa-regular fa-copy"></i>
-            </button>
+            <i class="fa-solid fa-book-quran main-icon"></i>
+            <span>أهلاً بك في رحاب السيرة النبوية والذكر العطر. اكتب كلمة البحث في الأعلى لاستعراض قصة المصطفى ﷺ كاملة ومصورة بأسلوب ملحمي رائع وجذاب.</span>
         </div>
     </main>
 
-    <section class="support-section">
-        <p class="support-title"><i class="fa-solid fa-heart-rose"></i> للمساهمة في دعم مكتب تحفيظ القرآن الكريم بلمسة واحدة:</p>
+    <section class="support-modal" id="donate-methods">
+        <p class="support-title"><i class="fa-solid fa-circle-dollar-to-slot"></i> دعم مكتب تحفيظ القرآن الكريم بلمسة واحدة:</p>
         <div class="buttons-container">
             <a href="https://instapay.me/YOUR_USERNAME" target="_blank" class="pay-btn instapay">
                 <img src="https://i.postimg.cc/hfV3Cvmt/GKV136-Insta-Pay-logobase-net.png" alt="InstaPay" class="btn-logo">
@@ -345,37 +452,120 @@
     </section>
 
     <script>
-        // قائمة العبارات الإيمانية والقرآنية الصافية والمعدة للأيقونات البرمجية
+        // كود تحريك الخلفية التفاعلية حركياً مع حركة ماوس أو لمس المستخدم للموبايل والشاشة
+        const orbBlue = document.getElementById('orb-blue');
+        const orbGreen = document.getElementById('orb-green');
+
+        window.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.05;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.05;
+            
+            orbBlue.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            orbGreen.style.transform = `translate(${-moveX}px, ${-moveY}px)`;
+        });
+
+        // دالة تتيح البحث بالضغط على زر Enter داخل حقل المدخلات للراحة الكاملة للمستخدم
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                getNewQuote();
+            }
+        }
+
+        // دالة إظهار وإخفاء خيارات التبرع الذكية (إنستا باي واتصالات كاش) عند الضغط على "تبرع الآن" من الهيدر
+        function toggleDonateOptions() {
+            const methodsDiv = document.getElementById('donate-methods');
+            if (methodsDiv.style.display === 'block') {
+                methodsDiv.style.display = 'none';
+            } else {
+                methodsDiv.style.display = 'block';
+            }
+        }
+
+        // أحداث السيرة النبوية المطولة، المشوقة والملحمية جداً لضمان قراءة مسترسلة وممتعة
         const quotes = [
-            "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ.",
-            "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ.",
-            "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ.",
-            "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ العَلِيِّ العَظِيمِ؛ كَنْزٌ مِنْ كُنُوزِ الجَنَّةِ.",
-            "أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ.",
-            "اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَى نَبِيِّنَا مُحَمَّدٍ."
+            {
+                icon: "fa-baby",
+                title: "١. فجر مكة وميلاد النور",
+                text: "في فجر يوم الإثنين الثاني عشر من ربيع الأول في عام الفيل، أضاء الكون بميلاد محمد بن عبد الله ﷺ في طهر مكة المكرمة. ولد يتيماً غريباً؛ فقد مات والده قبل أن يراه، ولم يلبث أن فجع بوفاة أمه 'آمنة بنت وهب' وهو في السادسة من عمره الغض. كفله جده عبد المطلب الذي أحبه بشدة، ثم انتقلت الرعاية إلى عمه أبي طالب، فترعرع في كنف الشظف والمشقة ممتلئاً عزةً وأنفة ونقاءً كشمس البادية."
+            },
+            {
+                icon: "fa-handshake",
+                title: "٢. الصادق الأمين ورفعة الشأن",
+                text: "شبّ المصطفى ﷺ بين قومه مميزاً بمهابة ربانية وأخلاق طاهرة لم تدنسها الجاهلية قط. اشتغل في مطلع شبابه برعي الأغنام متأملاً في ملكوت السماء، ثم خرج في التجارة محققاً أرباحاً واسعة بصدقه وأمانته التي فاقت الآفاق حتى لُقّب في أرجاء الجزيرة بـ'الصادق الأمين'. قاده هذا النبل لزواج مبارك تاريخي من السيدة خديجة بنت خويلد رضي الله عنها، فكانت له الحصن الدافئ والسند القوي الحكيم."
+            },
+            {
+                icon: "fa-cave",
+                title: "٣. ليلة غار حراء والوحي الإلهي",
+                text: "عندما شارف ﷺ على الأربعين من عمره الشريف, حبب إليه الخلاء والاعتزال، فكان يمضي الليالي ذوات العدد في أعماق 'غار حراء' يتعبد ويتفكر. وفي ليلة عظيمة هزت أركان التاريخ، انشق سكون الليل ونزل الروح الأمين جبريل عليه السلام ضاماً النبي بقوة قائلاً له: {اقْرَأْ}! ليرتجف فؤاد المصطفى وتشتعل الأرض بأعظم نور وهداية عرفتها البشرية على الإطلاق مُعلنة بداية عهد الرسالة."
+            },
+            {
+                icon: "fa-kaaba",
+                title: "٤. الصمود المكي والجهر بالحق",
+                text: "انطلقت الدعوة سراً لتثبيت القلوب لثلاث سنوات، حتى أتى الأمر الإلهي بالصدع بالحق والجهر بالرسالة فوق جبل الصفا. واجهت قريش هذا الدين الجديد بطغيان مرير وحصار واضطهاد دموي لا يرحم ضد الضعفاء والأصحاب الأوائل. لكن النبي ﷺ وقف كالطود الأشم لا يتزحزح، صامداً ومثبتاً أتباعه ومردداً عبارته التاريخية المزلزلة لعمه: 'والله يا عم، لو وضعوا الشمس في يميني والقمر في يساري على أن أترك هذا الأمر حتى يظهره الله أو أهلك دونه، ما تركته'."
+            },
+            {
+                icon: "fa-map-location-dot",
+                title: "٥. ملحمة الهجرة الكبرى وبناء الدولة",
+                text: "حين اشتد الحصار وبلغت المؤامرات القرشية ذروتها بقرار قتله، انطلقت ملحمة 'الهجرة المباركة'. تسلل النبي ﷺ وصاحبه الصديق في عتمة الليل متخفين في غار ثور في رحلة مثيرة حابسة للأنفاس ملأت قلوب المشركين حسرة. حتى وصلا يثرب التي اهتزت فرحاً وطرباً باستقباله وتسمت بـ'المدينة المنورة'. وهناك، أرسى النبي وثيقة المدينة، بنى مسجده الشريف، وآخى بين المهاجرين والأنصار ليؤسس أعظم دولة للعدل والرحمة."
+            },
+            {
+                icon: "fa-shield-halved",
+                title: "٦. الغزوات الكبرى والفتح المبين",
+                text: "لم يكن بدٌ من حماية الدولة الناشئة، فخاض المسلمون معارك فاصلة غيرت وجه الجزيرة العربية؛ من نصر بدر الإعجازي، وتمحيص أحد، إلى حصار الخندق الرهيب. توّج الله هذا الكفاح الأسطوري بالفتح الأعظم؛ 'فتح مكة' في العام الثامن للهجرة، حيث دخل النبي ﷺ الكعبة مطأطئاً رأسه تواضعاً لله، وحطم الأصنام، وضرب أروع صور العفو الإنساني في التاريخ معلناً لأعداء الأمس: (اذهبوا فأنتم الطلقاء)."
+            },
+            {
+                icon: "fa-mosque",
+                title: "٧. حجة الوداع ولحوق الرفيق الأعلى",
+                text: "في العام العاشر للهجرة، وقف النبي ﷺ على جبل الرحمة يؤدي 'حجة الوداع' أمام مئة ألف من المسلمين، ملقياً خطبته الخالدة التي أرست حقوق الإنسان والعدالة والكرامة. وبعد أن بلّغ الأمانة كاملة ونصح الأمة، صعدت روحه الطاهرة الزكية إلى الرفيق الأعلى في المدينة المنورة في العام الحادي عشر للهجرة، تاركاً خلفه ديناً قوياً ونوراً ساطعاً لا ينطفئ حتى قيام الساعة ﷺ."
+            }
         ];
 
         let currentQuoteText = "";
 
+        // دالة البحث واستعراض القصة الملحمية بالكامل
         function getNewQuote() {
+            const query = document.getElementById('search-input').value.trim();
             const container = document.getElementById('quote-container');
-            // اختيار عبارة عشوائية من القائمة
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            currentQuoteText = quotes[randomIndex];
             
-            // إضافة تأثير خفيف عند التغيير
-            container.style.opacity = 0;
-            setTimeout(() => {
-                // دمج أيقونة المصحف الشريف الديناميكية برمجياً بدلاً من الإيموجي التقليدي
-                container.innerHTML = `<i class="fa-solid fa-book-quran"></i> <span>${currentQuoteText}</span>`;
-                container.style.opacity = 1;
-            }, 150);
+            if (!query) {
+                container.innerHTML = `<i class="fa-solid fa-circle-exclamation main-icon" style="color:#6c757d;"></i><span>من فضلك اكتب كلمة للبحث عنها (مثال: قصة سيدنا محمد).</span>`;
+                return;
+            }
+
+            // تصفية البحث للتحقق من الكلمات الدلالية الخاصة بالنبي محمد ﷺ
+            if (query.includes("محمد") || query.includes("قصة") || query.includes("سيدنا")) {
+                container.style.opacity = 0;
+                
+                setTimeout(() => {
+                    let htmlContent = `<div class="story-wrapper">`;
+                    
+                    // بناء البطاقات المصورة بالتتابع لعرض السيرة الملحمية كاملة وبشكل شيق وجذاب
+                    quotes.forEach((item) => {
+                        htmlContent += `
+                            <div class="story-card">
+                                <div class="story-image-placeholder">
+                                    <i class="fa-solid ${item.icon}"></i>
+                                </div>
+                                <strong class="story-title-style">${item.title}</strong>
+                                <span>${item.text}</span>
+                            </div>
+                        `;
+                    });
+                    
+                    htmlContent += `</div>`;
+                    container.innerHTML = htmlContent;
+                    container.style.opacity = 1;
+                }, 200);
+            } else {
+                // في حال كتابة كلمات أخرى لم تدرج بعد
+                container.innerHTML = `<i class="fa-solid fa-magnifying-glass-blur main-icon" style="color:#6c757d;"></i><span>عذراً، لم يتم العثور على نتائج. جرب كتابة 'قصة سيدنا محمد' لتعيش أجمل اللحظات التاريخية.</span>`;
+            }
         }
 
-        // دالة مزودة وجديدة لنسخ النص الحالي ومشاركته على فيسبوك وإنستجرام
+        // دالة النسخ (محتفظ بها لسلامة البنية البرمجية)
         function copyCurrentQuote() {
-            if(!currentQuoteText) return;
-            navigator.clipboard.writeText(currentQuoteText).then(() => {
+            const container = document.getElementById('quote-container');
+            navigator.clipboard.writeText(container.innerText).then(() => {
                 const toast = document.getElementById('copy-toast');
                 toast.style.opacity = 1;
                 setTimeout(() => {
@@ -383,9 +573,6 @@
                 }, 1800);
             });
         }
-
-        // تشغيل أول عبارة تلقائياً عند فتح الموقع
-        window.onload = getNewQuote;
     </script>
 </body>
 </html>
