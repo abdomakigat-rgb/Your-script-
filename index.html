@@ -12,12 +12,13 @@
             src: url('Milan Display Black Swashes.otf') format('opentype'); /* تأكد من وضع ملف الخط في نفس مجلد الموقع */
         }
 
-        /* الألوان الأساسية التي اتفقنا عليها */
+        /* الألوان الأساسية الفاخرة والأكثر احترافية */
         :root {
-            --primary-green: #4CAF50;
-            --primary-blue: #2196F3;
+            --primary-green: #0d5c3a; /* أخضر زمردي فاخر ملكي */
+            --primary-blue: #1565c0;  /* أزرق نيلي عميق احترافي */
+            --gold-glow: #ffb300;     /* ذهبي مشع للتأثيرات الروحانية */
             --bg-color: #F5F5F5;
-            --text-dark: #333333;
+            --text-dark: #222222;
         }
 
         * {
@@ -28,159 +29,163 @@
 
         body {
             font-family: 'MilanDisplay', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* خلفية ثلاثية الأبعاد جبارة وروحانية عميقة */
-            background: radial-gradient(circle at 50% 15%, #ffffff 0%, #edf5ff 40%, #e2f3e4 80%, #d4ebd6 100%);
+            /* خلفية ثلاثية الأبعاد جبارة وروحانية عميقة بنظام تدرج فاخر ومريح */
+            background: radial-gradient(circle at 50% 10%, #ffffff 0%, #f0f7f4 35%, #e1eff2 70%, #d2e7df 100%);
             color: var(--text-dark);
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 24px 20px;
             overflow-x: hidden;
             position: relative;
-            perspective: 1000px; /* تمكين المنظور ثلاثي الأبعاد للموقع */
+            perspective: 1200px; /* تعميق المنظور ثلاثي الأبعاد لجعل العناصر تطفو بوضوح */
         }
 
-        /* عناصر الخلفية ثلاثية الأبعاد الجبارة (Floating Orbs) */
+        /* عناصر الخلفية ثلاثية الأبعاد الجبارة (Floating Orbs) ألوان محسنة */
         body::before, body::after {
             content: '';
             position: fixed;
             border-radius: 50%;
-            filter: blur(60px);
+            filter: blur(80px);
             z-index: -1;
-            opacity: 0.6;
-            animation: float3D 12s infinite alternate ease-in-out;
+            opacity: 0.5;
+            animation: float3D 15s infinite alternate ease-in-out;
         }
         body::before {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(33,150,243,0.3) 0%, rgba(33,150,243,0) 70%);
-            top: 10%;
-            left: -5%;
-        }
-        body::after {
             width: 350px;
             height: 350px;
-            background: radial-gradient(circle, rgba(76,175,80,0.25) 0%, rgba(76,175,80,0) 70%);
-            bottom: 10%;
-            right: -5%;
-            animation-delay: -4s;
+            background: radial-gradient(circle, rgba(21,101,192,0.25) 0%, rgba(21,101,192,0) 70%);
+            top: 5%;
+            left: -10%;
+        }
+        body::after {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(13,92,58,0.22) 0%, rgba(13,92,58,0) 70%);
+            bottom: 5%;
+            right: -10%;
+            animation-delay: -5s;
         }
 
         /* الهيدر واللوجو */
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             animation: fadeIn3D 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
             transform-style: preserve-3d;
         }
 
         .logo {
-            width: 125px;
-            height: 125px;
+            width: 130px;
+            height: 130px;
             object-fit: cover;
             border-radius: 50%;
-            /* تأثير ظل ثلاثي الأبعاد بارز وعميق للمجسمات الدائرية */
-            box-shadow: 0 15px 35px rgba(33, 150, 243, 0.25), inset 0 -4px 10px rgba(0,0,0,0.05);
+            /* تأثير ظل بارز وعميق ثلاثي الأبعاد محاط ببريق ذهبي ناعم */
+            box-shadow: 0 20px 40px rgba(13, 92, 58, 0.18), 0 5px 15px rgba(0,0,0,0.06), inset 0 -4px 10px rgba(0,0,0,0.03);
             border: 4px solid white;
-            margin-bottom: 15px;
-            transition: transform 0.4s ease;
-            transform: translateZ(30px);
+            margin-bottom: 18px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateZ(40px);
         }
         
         .logo:hover {
-            transform: scale(1.05) rotate(5deg) translateZ(40px);
+            transform: scale(1.08) rotate(-3deg) translateZ(55px);
+            box-shadow: 0 25px 45px rgba(21, 101, 192, 0.25);
         }
 
         h1 {
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             color: var(--primary-green);
-            margin-bottom: 5px;
-            text-shadow: 0 4px 10px rgba(76, 175, 80, 0.15), 0 2px 3px rgba(0,0,0,0.05);
+            margin-bottom: 6px;
+            text-shadow: 0 4px 12px rgba(13, 92, 58, 0.12), 0 2px 3px rgba(0,0,0,0.03);
             letter-spacing: 0.5px;
+            font-weight: 800;
         }
 
         .slogan {
             font-size: 1.15rem;
             color: var(--primary-blue);
             font-style: italic;
-            font-weight: 500;
-            text-shadow: 0 2px 4px rgba(33, 150, 243, 0.1);
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(21, 101, 192, 0.08);
         }
 
-        /* قسم العبارات الدينية (البوسترات الرقمية 3D) */
+        /* قسم العبارات الدينية (البوسترات الرقمية 3D الجبارة) */
         .content-section {
             width: 100%;
             max-width: 500px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 28px;
-            padding: 35px 30px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 30px;
+            padding: 40px 32px;
             text-align: center;
-            /* ظل مركب يعطي إحساساً حقيقياً بالطوفان ثلاثي الأبعاد */
-            box-shadow: 0 30px 60px rgba(0,0,0,0.06), 0 10px 20px rgba(0,0,0,0.02), inset 0 1px 0 rgba(255,255,255,0.6);
-            margin-bottom: 30px;
+            /* ظل مركب احترافي يعطي إحساساً بالطوفان الحقيقي فوق الشاشة */
+            box-shadow: 0 35px 70px rgba(13, 92, 58, 0.07), 0 15px 30px rgba(0,0,0,0.03), inset 0 1px 1px rgba(255,255,255,0.8);
+            margin-bottom: 35px;
             position: relative;
             transform-style: preserve-3d;
-            transform: translateZ(0deg);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform: translateZ(0px);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
             animation: slideUp3D 1s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         
         .content-section:hover {
-            transform: translateY(-5px) rotateX(2deg) rotateY(-1deg);
-            box-shadow: 0 40px 75px rgba(0,0,0,0.08), 0 15px 25px rgba(0,0,0,0.03);
+            transform: translateY(-8px) rotateX(2.5deg) rotateY(-1.5deg);
+            box-shadow: 0 45px 85px rgba(13, 92, 58, 0.12), 0 20px 35px rgba(0,0,0,0.04);
+            border-color: rgba(255, 255, 255, 0.95);
         }
 
         .quote-box {
-            min-height: 135px;
+            min-height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            line-height: 1.8;
-            color: #2c2c2c;
-            margin-bottom: 25px;
-            padding: 18px 22px;
+            font-size: 1.55rem;
+            line-height: 1.85;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            padding: 20px 25px;
             border-right: 5px solid var(--primary-blue);
             border-left: 5px solid var(--primary-green);
-            background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(245,250,246,0.6));
-            border-radius: 18px;
-            transition: opacity 0.15s ease-in-out;
-            box-shadow: inset 0 3px 6px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.01);
-            transform: translateZ(15px);
+            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(243,249,246,0.7) 100%);
+            border-radius: 20px;
+            transition: opacity 0.18s ease-in-out;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.015), 0 5px 15px rgba(0,0,0,0.01);
+            transform: translateZ(25px);
         }
 
         .quote-box i {
             color: var(--primary-green);
             margin-left: 14px;
-            font-size: 1.4rem;
-            text-shadow: 0 2px 4px rgba(76,175,80,0.2);
+            font-size: 1.5rem;
+            text-shadow: 0 3px 6px rgba(13,92,58,0.15);
         }
 
         /* حاوية الأزرار التفاعلية للعبارات */
         .action-container {
             display: flex;
-            gap: 15px;
+            gap: 16px;
             justify-content: center;
             align-items: center;
-            transform: translateZ(20px);
+            transform: translateZ(35px);
         }
 
         .next-btn {
-            background: linear-gradient(45deg, #1e88e5, #43a047);
+            background: linear-gradient(135deg, var(--primary-blue), #1976d2, var(--primary-green));
+            background-size: 150% 150%;
             color: white;
             border: none;
-            padding: 14px 38px;
-            font-size: 1.05rem;
+            padding: 15px 40px;
+            font-size: 1.1rem;
             border-radius: 50px;
             cursor: pointer;
             font-family: inherit;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            /* زاوية ظل واضحة تمنح تأثيراً مجسماً بارزاً للأزرار */
-            box-shadow: 0 8px 25px rgba(67, 160, 71, 0.3), 0 4px 10px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            /* زاوية ظل واضحة وعميقة تمنح الزر وزناً ومجسماً حقيقياً */
+            box-shadow: 0 10px 28px rgba(21, 101, 192, 0.35), 0 4px 10px rgba(0,0,0,0.06);
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -188,44 +193,45 @@
         }
 
         .next-btn i {
-            font-size: 1rem;
-            animation: rotateSparkle 3s infinite linear;
+            font-size: 1.05rem;
+            color: var(--gold-glow);
+            animation: rotateSparkle 3.5s infinite linear;
         }
 
         .next-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(67, 160, 71, 0.4), 0 5px 15px rgba(0,0,0,0.08);
-            background: linear-gradient(45deg, #2196F3, #4CAF50);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 14px 35px rgba(21, 101, 192, 0.45), 0 6px 18px rgba(0,0,0,0.08);
+            background-position: right center;
         }
 
         .next-btn:active {
             transform: scale(0.96) translateY(-1px);
-            box-shadow: 0 5px 15px rgba(67, 160, 71, 0.2);
+            box-shadow: 0 6px 18px rgba(21, 101, 192, 0.25);
         }
 
         /* زر النسخ الجديد والمزود لتسهيل مشاركة البوسترات */
         .copy-btn {
             background: #ffffff;
-            color: #555;
+            color: #444;
             border: 1px solid #e2e8f0;
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.03);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.03);
         }
 
         .copy-btn:hover {
             background: white;
             border-color: var(--primary-blue);
             color: var(--primary-blue);
-            box-shadow: 0 10px 20px rgba(33, 150, 243, 0.18);
-            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(21, 101, 192, 0.16);
+            transform: translateY(-4px);
         }
 
         .copy-btn:active {
@@ -235,22 +241,23 @@
         /* رسالة منبثقة صغيرة لتم النسخ */
         .toast {
             position: absolute;
-            bottom: 105px;
+            bottom: 115px;
             left: 50%;
-            transform: translateX(-50%) translateZ(25px);
-            background: rgba(20, 20, 20, 0.85);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
+            transform: translateX(-50%) translateZ(40px);
+            background: rgba(13, 92, 58, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             color: white;
-            padding: 10px 22px;
+            padding: 12px 24px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
             z-index: 10;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 30px rgba(13,92,58,0.25);
             font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         /* قسم قنوات الدعم والاتصال الصامتة للمكتب */
@@ -258,32 +265,33 @@
             width: 100%;
             max-width: 500px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            border-radius: 28px;
-            padding: 25px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.06), 0 10px 20px rgba(0,0,0,0.02);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 30px;
+            padding: 28px;
+            box-shadow: 0 35px 70px rgba(13, 92, 58, 0.05), 0 15px 30px rgba(0,0,0,0.02);
             transform-style: preserve-3d;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
             animation: slideUp3D 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         
         .support-section:hover {
-            transform: translateY(-3px) rotateX(1.5deg);
+            transform: translateY(-5px) rotateX(2deg);
+            box-shadow: 0 40px 80px rgba(13, 92, 58, 0.08);
         }
 
         .support-title {
             font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: #4a4a4a;
+            margin-bottom: 22px;
+            color: #3a3a3a;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            font-weight: 500;
-            transform: translateZ(10px);
+            font-weight: 600;
+            transform: translateZ(15px);
         }
 
         .support-title i {
@@ -292,10 +300,10 @@
 
         .buttons-container {
             display: flex;
-            gap: 15px;
+            gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
-            transform: translateZ(15px);
+            transform: translateZ(20px);
         }
 
         .pay-btn {
@@ -304,28 +312,28 @@
             justify-content: center;
             gap: 12px;
             flex: 1;
-            min-width: 165px;
-            padding: 14px;
-            border: 2px solid #edf2f7;
-            border-radius: 18px;
+            min-width: 170px;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
             text-decoration: none;
             color: var(--text-dark);
             font-weight: bold;
             font-size: 1rem;
             transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
             background: #ffffff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.01);
         }
 
         /* تخصيص زر انستا باي باللوجو الرسمي */
         .pay-btn.instapay .btn-logo {
-            height: 22px;
+            height: 24px;
             object-fit: contain;
         }
 
         /* تخصيص زر اتصالات كاش باللوجو الرسمي */
         .pay-btn.vodafone .btn-logo {
-            height: 24px;
+            height: 26px;
             object-fit: contain;
         }
 
@@ -333,36 +341,36 @@
             border-color: #673AB7;
             background-color: #ffffff;
             color: #673AB7;
-            box-shadow: 0 10px 25px rgba(103, 58, 183, 0.15);
-            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 28px rgba(103, 58, 183, 0.16);
+            transform: translateY(-4px) scale(1.02);
         }
 
         .pay-btn.vodafone:hover {
             border-color: #E60000;
             background-color: #ffffff;
             color: #E60000;
-            box-shadow: 0 10px 25px rgba(230, 0, 0, 0.12);
-            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 28px rgba(230, 0, 0, 0.14);
+            transform: translateY(-4px) scale(1.02);
         }
         
         .pay-btn:active {
             transform: scale(0.97) translateY(-1px);
         }
 
-        /* أنيميشن الحركات والظهور المجسم للموقع */
+        /* أنيميشن الحركات والظهور المجسم الفاخر للموقع */
         @keyframes fadeIn3D {
-            from { opacity: 0; transform: translateY(-20px) translateZ(-50px); }
+            from { opacity: 0; transform: translateY(-25px) translateZ(-60px); }
             to { opacity: 1; transform: translateY(0) translateZ(0); }
         }
 
         @keyframes slideUp3D {
-            from { opacity: 0; transform: translateY(30px) rotateX(-5deg); }
+            from { opacity: 0; transform: translateY(40px) rotateX(-6deg); }
             to { opacity: 1; transform: translateY(0) rotateX(0); }
         }
 
         @keyframes float3D {
             0% { transform: translateY(0) scale(1) rotate(0deg); }
-            100% { transform: translateY(-20px) scale(1.05) rotate(10deg); }
+            100% { transform: translateY(-25px) scale(1.06) rotate(8deg); }
         }
 
         @keyframes rotateSparkle {
